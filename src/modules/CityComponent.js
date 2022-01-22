@@ -41,15 +41,17 @@ margin: 20px auto;
   }
 `;
 
-const CityComponent =()=>{
+const CityComponent =(props)=>{
+  const{ updateCity ,fetchWeather}=props;
     return(
         <>
-        <WeatherLogo src=""></WeatherLogo>
+        <WeatherLogo src="/icons/perfect-day.svg"/>
         <ChooseCityLabel>Find Weather Of Your City</ChooseCityLabel>
-        <SearchBox>
-            <input placeholder="City"/>
-            <button>Search</button>
-            
+        <SearchBox onSubmit={fetchWeather}>
+            <input placeholder="City" 
+            onChange={(e) =>updateCity(e.target.value)}/>
+            <button type="submit">Search</button>
+          
         </SearchBox>
         </>
     )
